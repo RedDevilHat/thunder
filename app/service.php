@@ -6,8 +6,11 @@ $kernel->set('route', function () {
 
 $kernel->set('mailer', function () {
     $transport = new Swift_SmtpTransport();
-
     return new Swift_Mailer($transport);
+});
+
+$kernel->set('response', function () {
+    return \etc\http\Response\ResponseFabric::getResponse();
 });
 
 require_once 'adapters.php';

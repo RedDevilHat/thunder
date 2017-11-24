@@ -19,7 +19,7 @@ class HomeController extends Controller
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
-    public function getIndex()
+    public function postIndex()
     {
         /** @var HomeRepositories $repo */
         $repo = $this->container->get('homeRepo');

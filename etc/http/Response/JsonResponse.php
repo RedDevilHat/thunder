@@ -9,7 +9,7 @@
 namespace etc\http\Response;
 
 
-class JsonResponse
+class JsonResponse implements ResponseInterface
 {
     /**
      * @param $data
@@ -28,7 +28,12 @@ class JsonResponse
     {
         http_response_code(StatusHelper::HTTP_NOT_FOUND);
 
-        return json_encode(StatusHelper::getMessageForCode(StatusHelper::HTTP_NOT_FOUND));
+        return json_encode([
+            'error' => [
+                'status_code' => StatusHelper::HTTP_NOT_FOUND,
+                'message'     => StatusHelper::getMessageForCode(StatusHelper::HTTP_NOT_FOUND),
+            ],
+        ]);
     }
 
     /**
@@ -38,7 +43,13 @@ class JsonResponse
     {
         http_response_code(StatusHelper::HTTP_METHOD_NOT_ALLOWED);
 
-        return json_encode(StatusHelper::getMessageForCode(StatusHelper::HTTP_METHOD_NOT_ALLOWED));
+        return json_encode([
+                'error' => [
+                    'status_code' => StatusHelper::HTTP_METHOD_NOT_ALLOWED,
+                    'message'     => StatusHelper::getMessageForCode(StatusHelper::HTTP_METHOD_NOT_ALLOWED),
+                ],
+            ]
+        );
 
     }
 
@@ -51,6 +62,12 @@ class JsonResponse
     {
         http_response_code(StatusHelper::HTTP_INTERNAL_SERVER_ERROR);
 
-        return json_encode($message);
+        return json_encode([
+            'error' => [
+                'status_code' => StatusHelper::HTTP_INTERNAL_SERVER_ERROR,
+                'message'     => StatusHelper::getMessageForCode(StatusHelper::HTTP_INTERNAL_SERVER_ERROR),
+            ],
+        ]);
+
     }
 }

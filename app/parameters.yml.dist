@@ -2,3 +2,4 @@ default_connection:
 dsn:
 username:
 password:
+response_format:
