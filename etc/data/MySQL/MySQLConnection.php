@@ -9,14 +9,14 @@
 namespace etc\data\MySQL;
 
 
-use etc\data\Data;
+use etc\data\DataConnection;
 
 /**
  * Class DataBase
  *
  * @package etc\data\MySQL
  */
-class DataBase implements Data
+class MySQLConnection implements DataConnection
 {
     public $type = 'mysql';
 

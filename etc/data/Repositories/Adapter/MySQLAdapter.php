@@ -10,10 +10,10 @@ namespace etc\data\Repositories\Adapter;
 
 
 use DI\Container;
-use etc\data\MySQL\DataBase;
+use etc\data\MySQL\MySQLConnection;
 use etc\Kernel;
 
-class mysqlAdapter implements RepositoriesInterface
+class MySQLAdapter implements RepositoriesInterface
 {
     /** @var \PDO */
     protected $adapter;
@@ -24,9 +24,9 @@ class mysqlAdapter implements RepositoriesInterface
     /**
      * mysqlAdapter constructor.
      *
-     * @param DataBase $dataBase
+     * @param MySQLConnection $dataBase
      */
-    public function __construct(DataBase $dataBase)
+    public function __construct(MySQLConnection $dataBase)
     {
         $this->container = Kernel::getContainer();
 

@@ -13,7 +13,7 @@ namespace etc\data;
  *
  * @package etc\data
  */
-interface Data
+interface DataConnection
 {
     /**
      * Set connection to data source
