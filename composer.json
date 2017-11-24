@@ -1,0 +1,29 @@
+{
+  "name": "RedDevilHat/thunder",
+  "description": "Simple php7 mvc framework",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nikita Rassamakhin",
+      "email": "nrj.tomsk@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "etc\\": "etc/",
+      "Src\\": "src/",
+      "App\\": "app/"
+    }
+  },
+  "require": {
+    "php-di/php-di": "^5.4",
+    "symfony/yaml": "^3.3",
+    "phroute/phroute": "^2.1",
+    "swiftmailer/swiftmailer": "^6.0",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.4"
+  }
+}
