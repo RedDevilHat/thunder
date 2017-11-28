@@ -33,6 +33,7 @@ class HomeRepositories extends Repositories
     {
         $homes = $this->adapter->table('home')->get();
         $result = [];
+        /** @var Home $home */
         foreach ($homes as $home) {
             $result[] = $this->hydrator->hydrate($home);
         }

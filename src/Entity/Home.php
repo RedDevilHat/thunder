@@ -13,9 +13,9 @@ use etc\data\Entity\Entity;
 
 class Home extends Entity
 {
-    private $id;
+    public $id;
 
-    private $info;
+    public $info;
 
     /**
      * @return mixed
