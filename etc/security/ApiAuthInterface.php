@@ -1,6 +1,6 @@
 <?php
 
-namespace etc\auth;
+namespace etc\security;
 
 
 use etc\Entity\User;

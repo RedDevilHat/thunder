@@ -10,6 +10,7 @@ namespace src\Guard\ApiGate;
 
 
 use etc\auth\ApiAuthInterface;
+use Src\Entity\User;
 
 /**
  * Class ApiAuthInterfaceGate
@@ -32,7 +33,7 @@ class ApiAuthInterfaceGate implements ApiAuthInterface
         // TODO: Implement expiredToken() method.
     }
 
-    public function getUser()
+    public function getUser() : User
     {
         // TODO: Implement getUser() method.
     }
