@@ -21,51 +21,21 @@ class JsonResponse implements ResponseInterface
         return json_encode($data);
     }
 
-    /**
-     * @return string
-     */
-    public static function notFound() : string
-    {
-        http_response_code(StatusHelper::HTTP_NOT_FOUND);
-
-        return json_encode([
-            'error' => [
-                'status_code' => StatusHelper::HTTP_NOT_FOUND,
-                'message'     => StatusHelper::getMessageForCode(StatusHelper::HTTP_NOT_FOUND),
-            ],
-        ]);
-    }
 
     /**
-     * @return string
-     */
-    public static function methodNotAllowed() : string
-    {
-        http_response_code(StatusHelper::HTTP_METHOD_NOT_ALLOWED);
-
-        return json_encode([
-                'error' => [
-                    'status_code' => StatusHelper::HTTP_METHOD_NOT_ALLOWED,
-                    'message'     => StatusHelper::getMessageForCode(StatusHelper::HTTP_METHOD_NOT_ALLOWED),
-                ],
-            ]
-        );
-
-    }
-
-    /**
-     * @param string $message
+     * @param string $stacktrace
      *
      * @return string
      */
-    public static function error(string $message) : string
+    public static function error(int $statusCode, string $stacktrace) : string
     {
-        http_response_code(StatusHelper::HTTP_INTERNAL_SERVER_ERROR);
+        http_response_code($statusCode);
 
         return json_encode([
             'error' => [
-                'status_code' => StatusHelper::HTTP_INTERNAL_SERVER_ERROR,
-                'message'     => StatusHelper::getMessageForCode(StatusHelper::HTTP_INTERNAL_SERVER_ERROR),
+                'status_code'    => $statusCode,
+                'message'        => StatusHelper::getMessageForCode($statusCode),
+                'stacktrace'     => $stacktrace,
             ],
         ]);
 

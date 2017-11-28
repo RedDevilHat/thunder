@@ -9,7 +9,10 @@
 namespace Src\Repositories;
 
 
+use Database\Connection;
 use etc\data\Repositories\Repositories;
+use etc\Entity\User;
+use Src\Entity\Home;
 
 /**
  * Class HomeRepositories
@@ -20,27 +23,26 @@ class HomeRepositories extends Repositories
 {
     protected $connection = 'mysql';
 
-    /** @var \PDO */
-    protected $pdoAdapter;
+    /** @var Connection */
+    protected $adapter;
 
     /**
-     * HomeRepositories constructor.
-     *
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
-     */
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->pdoAdapter = $this->adapter;
-    }
-
-    /**
-     * @return bool
+     * @return array
      */
     public function getAll()
     {
-        return $this->pdoAdapter->query('SELECT * FROM home')->fetch();
+        $homes = $this->adapter->table('home')->get();
+        $result = [];
+        foreach ($homes as $home) {
+            $result[] = $this->hydrator->hydrate($home);
+        }
+
+        return $result;
+    }
+
+    public function getUser()
+    {
+        $user = new User();
+        return $user->prepare();
     }
 }

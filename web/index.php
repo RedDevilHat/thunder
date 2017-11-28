@@ -5,13 +5,17 @@ require_once '../vendor/autoload.php';
 /** @var \DI\Container $kernel */
 $kernel    = \etc\Kernel::getContainer();
 $parameters = \etc\Kernel::getParameters();
+/**
+ * Error and Exception handling
+ */
+error_reporting(E_ALL);
+set_error_handler('etc\error\ErrorHandler::handler');
+set_exception_handler('etc\error\ExceptionHandler::handler');
 
-require_once '../app/service.php';
-require_once '../app/router.php';
+require_once '../app/ServiceProvider/service_provider_bootstrap.php';
+require_once '../app/Router/router.php';
 
-
-try {
-    /** @var \etc\http\Response\ResponseInterface $responseInterface */
+ /** @var \etc\http\Response\ResponseInterface $responseInterface */
     $responseInterface = $kernel->get('response');
     $routData          = $router->getData();
     $dispatcher        = new Phroute\Phroute\Dispatcher($routData);
@@ -20,10 +24,4 @@ try {
 
     // Print out the value returned from the dispatched function
     echo $responseInterface::success($response);
-} catch (Phroute\Phroute\Exception\HttpRouteNotFoundException $exception) {
-    echo $responseInterface::notFound();
-} catch (Phroute\Phroute\Exception\HttpMethodNotAllowedException $exception) {
-    echo $responseInterface::methodNotAllowed();
-} catch (Exception $exception) {
-    echo $responseInterface::error($exception->getMessage());
-}
+

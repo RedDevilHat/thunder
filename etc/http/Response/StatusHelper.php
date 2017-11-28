@@ -156,7 +156,7 @@ class StatusHelper
 
     private static $messages = array(
 
-
+        0 => 'unknown',
         // [Informational 1xx]
 
 

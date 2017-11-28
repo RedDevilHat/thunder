@@ -1,6 +1,4 @@
 <?php
-$kernel = \etc\Kernel::getContainer();
-
 /** @var \Phroute\Phroute\RouteCollector $router */
 $router = $kernel->get('route');
 

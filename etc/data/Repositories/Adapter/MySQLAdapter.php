@@ -9,13 +9,14 @@
 namespace etc\data\Repositories\Adapter;
 
 
+use Database\Connection;
 use DI\Container;
 use etc\data\MySQL\MySQLConnection;
 use etc\Kernel;
 
-class MySQLAdapter implements RepositoriesInterface
+class MySQLAdapter implements AdapterInterface
 {
-    /** @var \PDO */
+    /** @var Connection */
     protected $adapter;
 
     /** @var Container */
@@ -34,9 +35,9 @@ class MySQLAdapter implements RepositoriesInterface
     }
 
     /**
-     * @return \PDO
+     * @return Connection
      */
-    public function getAdapter() : \PDO
+    public function getAdapter() : Connection
     {
         return $this->adapter;
     }

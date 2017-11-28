@@ -21,7 +21,9 @@
     "symfony/yaml": "^3.3",
     "phroute/phroute": "^2.1",
     "swiftmailer/swiftmailer": "^6.0",
-    "guzzlehttp/guzzle": "~6.0"
+    "guzzlehttp/guzzle": "~6.0",
+    "mrjgreen/database": "^2.5",
+    "ocramius/generated-hydrator": "^2.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.4"

@@ -1,0 +1,15 @@
+## DATABASE
+
+#MySQL
+default_connection: mysql
+
+database: thunder
+host: localhost
+username: homestead
+password: secret
+charset: utf8
+collation: utf8_unicode_ci
+lazy: true
+
+## RESPONSE FORMATER
+response_format: json

@@ -8,9 +8,11 @@
 
 namespace etc;
 
-
+use App\ServiceProvider;
 use DI\Container;
 use DI\ContainerBuilder;
+use DI\DependencyException;
+use DI\NotFoundException;
 use Symfony\Component\Yaml\Yaml;
 
 class Kernel
@@ -21,15 +23,18 @@ class Kernel
     /** @var array */
     private static $parameters;
 
+    /** @var ServiceProvider */
+    private static $serviceprovide;
+
     /**
      * initialize Kernel app, singletone
+     *
      */
     public static function init() : void
     {
         if (self::$container === null) {
-            self::$parameters = Yaml::parse(file_get_contents('../app/parameters.yml'));
-
             self::$container = ContainerBuilder::buildDevContainer();
+            self::$parameters = Yaml::parse(file_get_contents('../app/config/parameters.yml'));
         }
     }
 

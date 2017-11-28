@@ -11,7 +11,7 @@ namespace etc\http\Response;
 
 use etc\Kernel;
 
-class ResponseFabric
+class ResponseFactory
 {
     /**
      * @return ResponseInterface

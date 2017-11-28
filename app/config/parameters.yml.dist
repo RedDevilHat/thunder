@@ -1,5 +1,6 @@
 default_connection:
-dsn:
+database:
+host:
 username:
 password:
 response_format:

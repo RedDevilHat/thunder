@@ -9,6 +9,8 @@
 namespace etc\data\MySQL;
 
 
+use Database\Connection;
+use Database\Connectors\ConnectionFactory;
 use etc\data\DataConnection;
 
 /**
@@ -20,39 +22,74 @@ class MySQLConnection implements DataConnection
 {
     public $type = 'mysql';
 
-    /** @var \PDO */
-    private $connection = null;
+    /** @var Connection */
+    private $connection;
 
-    private $dsn;
+    /** @var string */
+    private $database;
+
+    /** @var string */
+    private $host;
+
+    /** @var string */
     private $username;
-    private $passwd;
 
-    public function __construct(string $dsn, string $username, string $passwd)
+    /** @var string */
+    private $password;
+
+    /** @var string */
+    private $charset;
+
+    /** @var string */
+    private $collation;
+
+    /** @var bool */
+    private $lazy;
+
+    /**
+     * MySQLConnection constructor.
+     * @param string $database
+     * @param string $host
+     * @param string $username
+     * @param string $password
+     * @param string $charset
+     * @param string $collation
+     */
+    public function __construct(string $database, string $host, string $username, string $password, string $charset, string $collation, bool $lazy)
     {
-        $this->dsn      = $dsn;
+        $this->database = $database;
+        $this->host = $host;
         $this->username = $username;
-        $this->passwd   = $passwd;
+        $this->password = $password;
+        $this->charset = $charset;
+        $this->collation = $collation;
+        $this->lazy = $lazy;
     }
+
 
     public function setConnection()
     {
-        $this->connection = new \PDO(
-            $this->dsn,
-            $this->username,
-            $this->passwd
-        );
+        $factory = new ConnectionFactory();
+        $this->connection = $factory->make(array(
+            'driver'    => $this->type,
+            'database'  => $this->database,
+            'host'      => $this->host,
+            'username'  => $this->username,
+            'password'  => $this->password,
+            'charset'   => $this->charset,
+            'collation' => $this->collation,
+
+            // Don't connect until we execute our first query
+            'lazy'      => $this->lazy,
+        ));
     }
 
-    /**
-     * @return \PDO
-     */
-    public function init() : \PDO
-    {
-        if ($this->connection) {
-            return $this->connection;
-        }
 
-        $this->setConnection();
+    public function init() : Connection
+    {
+        if(!$this->connection) {
+            $this->setConnection();
+        }
 
         return $this->connection;
     }

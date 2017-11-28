@@ -1,14 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: rny
+ * User: rassamakhin
  * Date: 24.11.2017
- * Time: 13:58
+ * Time: 21:29
  */
 
 namespace etc\data\Entity;
 
-
+/**
+ * Class Entity
+ * @package etc\data\Entity
+ */
 abstract class Entity
 {
 

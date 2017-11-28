@@ -13,7 +13,7 @@ namespace etc\data\Repositories\Adapter;
  *
  * @package etc\data\Repositories
  */
-interface RepositoriesInterface
+interface AdapterInterface
 {
 
 }

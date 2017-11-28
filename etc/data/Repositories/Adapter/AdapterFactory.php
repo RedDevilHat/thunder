@@ -12,7 +12,7 @@ namespace etc\data\Repositories\Adapter;
 use DI\Container;
 use etc\Kernel;
 
-class AdapterFabric
+class AdapterFactory
 {
     /** @var Container */
     private static $container;

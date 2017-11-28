@@ -23,19 +23,9 @@ interface ResponseInterface
     public static function success($data) : string;
 
     /**
-     * @return string
-     */
-    public static function notFound() : string;
-
-    /**
-     * @return string
-     */
-    public static function methodNotAllowed() : string;
-
-    /**
-     * @param string $message
+     * @param string $stacktrace
      *
      * @return string
      */
-    public static function error(string $message) : string;
+    public static function error(int $statusCode, string $stacktrace) : string;
 }
