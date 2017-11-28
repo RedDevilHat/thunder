@@ -8,8 +8,8 @@
 
 namespace src\Guard\ApiGate;
 
-
-use etc\auth\ApiAuthInterface;
+use etc\security\ApiAuthInterface;
+use etc\security\ThunderUserInterface;
 use Src\Entity\User;
 
 /**
@@ -18,22 +18,32 @@ use Src\Entity\User;
  */
 class ApiAuthInterfaceGate implements ApiAuthInterface
 {
+    /**
+     * @return string
+     */
     public function createToken(): string
     {
         // TODO: Implement createToken() method.
     }
 
+    /**
+     * @return bool
+     */
     public function checkGuard(): bool
     {
         // TODO: Implement checkGuard() method.
     }
+
 
     public function expiredToken(): void
     {
         // TODO: Implement expiredToken() method.
     }
 
-    public function getUser() : User
+    /**
+     * @return ThunderUserInterface
+     */
+    public function getUser() : ThunderUserInterface
     {
         // TODO: Implement getUser() method.
     }

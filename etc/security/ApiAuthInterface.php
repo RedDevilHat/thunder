@@ -2,9 +2,6 @@
 
 namespace etc\security;
 
-
-use etc\Entity\User;
-
 interface ApiAuthInterface
 {
     /**
@@ -24,7 +21,7 @@ interface ApiAuthInterface
     public function expiredToken() : void;
 
     /**
-     * @return User
+     * @return ThunderUserInterface
      */
-    public function getUser() : User;
+    public function getUser() : ThunderUserInterface;
 }

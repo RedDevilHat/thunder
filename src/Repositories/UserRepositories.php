@@ -13,5 +13,8 @@ use etc\data\Repositories\Repositories;
 
 class UserRepositories extends Repositories
 {
-
+    public function getAll()
+    {
+        
+    }
 }
