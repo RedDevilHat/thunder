@@ -12,7 +12,7 @@ namespace etc\data\Entity;
  * Class Entity
  * @package etc\data\Entity
  */
-abstract class Entity
+abstract class Entity implements EntityInterface
 {
 
 }

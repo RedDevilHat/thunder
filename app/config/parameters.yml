@@ -1,8 +1,9 @@
 ## DATABASE
 
-#MySQL
+## Connection
 default_connection: mysql
 
+## MySQL
 database: thunder
 host: localhost
 username: homestead

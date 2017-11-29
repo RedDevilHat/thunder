@@ -9,10 +9,9 @@
 namespace Src\Repositories;
 
 
-use Database\Connection;
+use etc\data\Repositories\Adapter\AdapterInterface;
 use etc\data\Repositories\Repositories;
 use etc\Entity\User;
-use Src\Entity\Home;
 
 /**
  * Class HomeRepositories
@@ -23,7 +22,7 @@ class HomeRepositories extends Repositories
 {
     protected $connection = 'mysql';
 
-    /** @var Connection */
+    /** @var AdapterInterface */
     protected $adapter;
 
     /**
@@ -31,19 +30,11 @@ class HomeRepositories extends Repositories
      */
     public function getAll()
     {
-        $homes = $this->adapter->table('home')->get();
-        $result = [];
-        /** @var Home $home */
-        foreach ($homes as $home) {
-            $result[] = $this->hydrator->hydrate($home);
-        }
-
-        return $result;
+        return $this->adapter->getAll();
     }
 
     public function getUser()
     {
-        $user = new User();
-        return $user->prepare();
+
     }
 }

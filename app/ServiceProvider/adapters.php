@@ -12,7 +12,7 @@ $kernel->set('mysql', function () {
 });
 
 $kernel->set('mysql-adapter', function () use ($kernel) {
-    return (new \etc\data\Repositories\Adapter\MySQLAdapter(
+    return new \etc\data\Repositories\Adapter\MySQLAdapter(
         $kernel->get('mysql')
-    ))->getAdapter();
+    );
 });

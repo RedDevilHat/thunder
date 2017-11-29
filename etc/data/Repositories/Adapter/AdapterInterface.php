@@ -8,6 +8,8 @@
 
 namespace etc\data\Repositories\Adapter;
 
+use etc\data\Entity\EntityInterface;
+
 /**
  * Interface RepositoriesInterface
  *
@@ -15,5 +17,15 @@ namespace etc\data\Repositories\Adapter;
  */
 interface AdapterInterface
 {
+    public function getAll();
 
+    public function getById(int $id);
+
+    public function find(array $critera);
+
+    public function insert(EntityInterface $entity);
+
+    public function update(EntityInterface $entity);
+
+    public function delete(EntityInterface $entity);
 }

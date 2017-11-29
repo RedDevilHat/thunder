@@ -10,40 +10,47 @@ namespace etc\data\Hydrator;
 
 
 use GeneratedHydrator\Configuration;
-use GeneratedHydrator\Factory\HydratorFactory;
 
 class Hydrator
 {
-    /** @var string */
     private $hydrator;
 
     /** @var string */
     private $classname = "Src\Entity\\";
+
     /**
      * Hydrator constructor.
+     *
      * @param string $entityName
      */
     public function __construct(string $entityName)
     {
         $this->classname = $this->classname.$entityName;
-        $this->hydrator = (new Configuration($this->classname))->createFactory()->getHydratorClass();
-        $this->hydrator = new $this->hydrator;
+        $this->hydrator  = (new Configuration($this->classname))->createFactory()->getHydratorClass();
+        $this->hydrator  = new $this->hydrator;
     }
 
     /**
      * @param array $data
+     *
      * @return mixed
      */
     public function hydrate(array $data)
     {
-        return $this->hydrator->hydrate($data, new $this->classname);
+        $result = [];
+        foreach ($data as $array) {
+            $result[] = $this->hydrator->hydrate($array, new $this->classname);
+        }
+
+        return $result;
     }
 
     /**
      * @param object $entity
+     *
      * @return array
      */
-    public function extract($entity):array
+    public function extract($entity) : array
     {
         return $this->hydrator->extract($entity);
     }
