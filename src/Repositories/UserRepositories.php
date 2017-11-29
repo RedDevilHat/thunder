@@ -10,6 +10,7 @@ namespace Src\Repositories;
 
 
 use Database\Connection;
+use etc\data\Repositories\Adapter\AdapterInterface;
 use etc\data\Repositories\Repositories;
 use Src\Entity\User;
 
@@ -22,22 +23,42 @@ class UserRepositories extends Repositories
 {
     protected $connection = 'mysql';
 
-    /** @var Connection */
+    /** @var AdapterInterface */
     protected $adapter;
 
 
     public function getAll()
     {
-        return $this->hydrator->hydrate($this->adapter->table('user')->get());
+        return $this->adapter->getAll();
     }
 
-    public function getById(int $id) : User
+    public function getById(int $id)
     {
-        return $this->hydrator->hydrate($this->adapter->table('user')->find($id));
+        return $this->adapter->getById($id);
     }
 
-    public function getByUsername(string $username) : User
+    public function getByUsername(string $username)
     {
-        return $this->hydrator->hydrate($this->adapter->table('user')->where('username', '=', $username)->get());
+        return $this->adapter->find(['username' => $username]);
+    }
+
+    public function find(array $criteria, string $operator = '=')
+    {
+        return $this->adapter->find($criteria, $operator);
+    }
+
+    public function create(User $user)
+    {
+        return $this->adapter->insert($user);
+    }
+
+    public function update(User $user)
+    {
+        return $this->adapter->update($user);
+    }
+
+    public function delete(User $user)
+    {
+        return $this->adapter->delete($user);
     }
 }

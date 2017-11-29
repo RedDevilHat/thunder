@@ -29,6 +29,8 @@ class ProxyHydratorGate implements AdapterInterface
      * Gate constructor.
      *
      * @param Container $container
+     * @param Hydrator $hydrator
+     * @param AdapterInterface $adapter
      */
     public function __construct(Container $container, Hydrator $hydrator, AdapterInterface $adapter)
     {
@@ -45,33 +47,41 @@ class ProxyHydratorGate implements AdapterInterface
 
     public function getAll()
     {
-        return $this->hydrator->hydrate($this->current_adapter->getAll() ?? []);
+        return $this->hydrator->hydrate($this->current_adapter->getAll());
     }
 
     public function getById(int $id)
     {
-        return $this->hydrator->hydrate($this->current_adapter->getById($id) ?? []);
+        return $this->hydrator->hydrate($this->current_adapter->getById($id));
     }
 
-    public function find(array $critera)
+    public function find(array $criteria, string $operator = null)
     {
-        return $this->hydrator->hydrate($this->current_adapter->getAll() ?? []);
+        return $this->hydrator->hydrate($this->current_adapter->find($criteria,$operator));
     }
 
     public function insert(EntityInterface $entity)
     {
-        return $this->hydrator->hydrate($this->current_adapter->getAll() ?? []);
+        return $this->hydrator->hydrate($this->current_adapter->insert($entity));
     }
 
     public function update(EntityInterface $entity)
     {
-        return $this->hydrator->hydrate($this->current_adapter->getAll() ?? []);
+        return $this->hydrator->hydrate($this->current_adapter->update($entity));
     }
 
     public function delete(EntityInterface $entity)
     {
-        return $this->hydrator->hydrate($this->current_adapter->getAll() ?? []);
+        return $this->hydrator->hydrate($this->current_adapter->delete($entity));
     }
 
+    public function getRawConnection()
+    {
+        return $this->current_adapter->getRawConnection();
+    }
 
+    public function entityToArray(EntityInterface $entity)
+    {
+        // TODO: Implement entityToArray() method.
+    }
 }

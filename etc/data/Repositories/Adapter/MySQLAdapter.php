@@ -11,14 +11,18 @@ namespace etc\data\Repositories\Adapter;
 
 use Database\Connection;
 use DI\Container;
+use function DI\value;
+use etc\ClassNameHelper;
+use etc\data\Entity\Entity;
 use etc\data\Entity\EntityInterface;
+use etc\data\Hydrator\Hydrator;
 use etc\data\MySQL\MySQLConnection;
 use etc\Kernel;
 
 class MySQLAdapter implements AdapterInterface
 {
     /** @var Connection */
-    protected $adapter;
+    protected $transport;
 
     /** @var Container */
     protected $container;
@@ -35,8 +39,10 @@ class MySQLAdapter implements AdapterInterface
     {
         $this->container = Kernel::getContainer();
 
-        $this->adapter = $dataBase->init();
+        $this->transport = $dataBase->init();
     }
+
+
 
     /**
      * @param string $entityName
@@ -46,43 +52,61 @@ class MySQLAdapter implements AdapterInterface
         $this->table = $entityName;
     }
 
-    /**
-     * @return Connection
-     */
-    public function getAdapter() : Connection
-    {
-        return $this->adapter;
-    }
-
     public function getAll()
     {
-        return $this->adapter->table($this->table)->get();
+        return $this->transport->table($this->table)->get();
     }
 
     public function getById(int $id)
     {
-        return $this->adapter->table($this->table)->find($id);
+        return $this->transport->table($this->table)->find($id);
     }
 
-    public function find(array $critera)
+    public function find(array $criteria, string $operator = null)
     {
-        // TODO: Implement find() method.
+        $query = $this->transport->table($this->table)->select();
+        if($operator === null) {
+            $operator = '=';
+        }
+        foreach ($criteria as $key => $value) {
+            $query->where($key, $operator, $value);
+        }
+
+        return $query->get();
     }
 
     public function insert(EntityInterface $entity)
     {
-        // TODO: Implement insert() method.
+        $this->transport->table($this->table)->insert($this->entityToArray($entity));
     }
 
     public function update(EntityInterface $entity)
     {
-        // TODO: Implement update() method.
+        $values = $this->entityToArray($entity);
+        unset($values['id']);
+        $this->transport->table($this->table)->where('id', '=', $entity->getId())->update($values);
     }
 
     public function delete(EntityInterface $entity)
     {
-        // TODO: Implement delete() method.
+        $this->transport->table($this->table)->delete($entity->getId());
     }
 
+    /**
+     * @return Connection
+     */
+    public function getRawConnection()
+    {
+        return $this->transport;
+    }
 
+    public function entityToArray(EntityInterface $entity)
+    {
+        /** @var Hydrator $hydrator */
+        $hydrator = $this->container->make(Hydrator::class, [
+            'entityName' => ClassNameHelper::getEntityClassNameWithoutNameSpace(get_class($entity))
+        ]);
+
+        return $hydrator->extract($entity);
+    }
 }

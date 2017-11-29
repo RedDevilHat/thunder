@@ -1,13 +1,15 @@
 <?php
 $kernel->set('mysql', function () {
+        $mysql = \etc\Kernel::getParameters('mysql');
+
         return new \etc\data\MySQL\MySQLConnection(
-            \etc\Kernel::getParameters('database'),
-            \etc\Kernel::getParameters('host'),
-            \etc\Kernel::getParameters('username'),
-            \etc\Kernel::getParameters('password'),
-            \etc\Kernel::getParameters('charset'),
-            \etc\Kernel::getParameters('collation'),
-            \etc\Kernel::getParameters('lazy')
+            $mysql['database'],
+            $mysql['host'],
+            $mysql['username'],
+            $mysql['password'],
+            $mysql['charset'],
+            $mysql['collation'],
+            $mysql['lazy']
         );
 });
 

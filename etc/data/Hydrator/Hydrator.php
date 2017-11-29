@@ -35,11 +35,18 @@ class Hydrator
      *
      * @return mixed
      */
-    public function hydrate(array $data)
+    public function hydrate(array $data = null)
     {
         $result = [];
-        foreach ($data as $array) {
-            $result[] = $this->hydrator->hydrate($array, new $this->classname);
+
+        if($data) {
+            if (isset($data[0]) && \is_array($data[0])) {
+                foreach ($data as $array) {
+                    $result[] = $this->hydrator->hydrate($array, new $this->classname);
+                }
+            } else {
+                $result = $this->hydrator->hydrate($data, new $this->classname);
+            }
         }
 
         return $result;

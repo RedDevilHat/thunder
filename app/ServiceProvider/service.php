@@ -12,6 +12,3 @@ $kernel->set('route', function () {
 $kernel->set('response', function () {
     return ResponseFactory::getResponse();
 });
-
-require_once 'repositories.php';
-require_once 'adapters.php';

@@ -14,61 +14,108 @@ use etc\security\ThunderUserInterface;
 
 class User extends Entity implements ThunderUserInterface
 {
+    /** @var int */
     public $id;
+    /** @var string */
     public $username;
-    public $password;
-    public $token_id;
-    public $role;
 
+    /** @var string */
+    public $password;
+
+    /** @var int */
+    public $token_id;
+
+    /** @var int */
+    public $role_id;
+
+    /**
+     * @return int
+     */
     public function getId(): int
     {
-        // TODO: Implement getId() method.
+        return $this->id;
     }
 
-    public function setId(int $id): ThunderUserInterface
+    /**
+     * @param int $id
+     * @return User
+     */
+    public function setId(int $id): User
     {
-        // TODO: Implement setId() method.
+        $this->id = $id;
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getUsername(): string
     {
-        // TODO: Implement getUsername() method.
+        return $this->username;
     }
 
-    public function setUsername(string $username): ThunderUserInterface
+    /**
+     * @param string $username
+     * @return User
+     */
+    public function setUsername(string $username): User
     {
-        // TODO: Implement setUsername() method.
+        $this->username = $username;
+        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getPassword(): string
     {
-        // TODO: Implement getPassword() method.
+        return $this->password;
     }
 
-    public function setPassword(string $password): ThunderUserInterface
+    /**
+     * @param string $password
+     * @return User
+     */
+    public function setPassword(string $password): User
     {
-        // TODO: Implement setPassword() method.
+        $this->password = $password;
+        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getTokenId(): int
     {
-        // TODO: Implement getTokenId() method.
+        return $this->token_id;
     }
 
-    public function setTokenId(int $tokenId): ThunderUserInterface
+    /**
+     * @param int $token_id
+     * @return User
+     */
+    public function setTokenId(int $token_id): User
     {
-        // TODO: Implement setTokenId() method.
+        $this->token_id = $token_id;
+        return $this;
     }
 
-    public function getRole(): int
+    /**
+     * @return int
+     */
+    public function getRoleId(): int
     {
-        // TODO: Implement getRole() method.
+        return $this->role_id;
     }
 
-    public function setRole(int $role): ThunderUserInterface
+    /**
+     * @param int $role_id
+     * @return User
+     */
+    public function setRoleId(int $role_id): User
     {
-        // TODO: Implement setRole() method.
+        $this->role_id = $role_id;
+        return $this;
     }
-
 
 }

@@ -1,16 +1,17 @@
 ## DATABASE
 
 # Connection
-default_connection:
+default_connection: mysql
 
 # MySQL
-database:
-host:
-username:
-password:
-charset:
-collation:
-lazy:
+mysql:
+    database: thunder
+    host: localhost
+    username: root
+    password: root
+    charset: utf8
+    collation: utf8_unicode_ci
+    lazy: true
 
 ## RESPONSE FORMATER
 response_format: json

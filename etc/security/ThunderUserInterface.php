@@ -20,7 +20,8 @@ interface ThunderUserInterface
      * @param int $id
      * @return ThunderUserInterface
      */
-    public function setId(int $id): ThunderUserInterface;
+    public function setId(int $id);
+
     /**
      * @return string
      */
@@ -30,7 +31,7 @@ interface ThunderUserInterface
      * @param string $username
      * @return ThunderUserInterface
      */
-    public function setUsername(string $username): ThunderUserInterface;
+    public function setUsername(string $username);
 
     /**
      * @return string
@@ -41,7 +42,7 @@ interface ThunderUserInterface
      * @param string $password
      * @return ThunderUserInterface
      */
-    public function setPassword(string $password): ThunderUserInterface;
+    public function setPassword(string $password);
 
     /**
      * @return int
@@ -52,16 +53,16 @@ interface ThunderUserInterface
      * @param int $tokenId
      * @return ThunderUserInterface
      */
-    public function setTokenId(int $tokenId): ThunderUserInterface;
+    public function setTokenId(int $tokenId);
 
     /**
      * @return int
      */
-    public function getRole():int;
+    public function getRoleId():int;
 
     /**
      * @param int $role
      * @return ThunderUserInterface
      */
-    public function setRole(int $role): ThunderUserInterface;
+    public function setRoleId(int $role);
 }

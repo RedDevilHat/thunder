@@ -23,11 +23,15 @@ interface AdapterInterface
 
     public function getById(int $id);
 
-    public function find(array $critera);
+    public function find(array $criteria, string $operator = null);
 
     public function insert(EntityInterface $entity);
 
     public function update(EntityInterface $entity);
 
     public function delete(EntityInterface $entity);
+
+    public function getRawConnection();
+
+    public function entityToArray(EntityInterface $entity);
 }

@@ -10,6 +10,8 @@ namespace Src\http\Controller;
 
 
 use etc\http\Controller\Controller;
+use Src\Entity\User;
+use Src\Repositories\UserRepositories;
 
 /**
  * Class HomeController

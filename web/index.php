@@ -23,5 +23,5 @@ $response          = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'],
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 // Print out the value returned from the dispatched function
-echo $responseInterface::success($response);
+print_r($responseInterface::success($response));
 
