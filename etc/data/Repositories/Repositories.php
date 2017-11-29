@@ -48,7 +48,7 @@ abstract class Repositories
 
         /** @var AdapterInterface $currentAdapter */
         $currentAdapter = AdapterFactory::getAdapter($this->connection);
-        $currentAdapter->setTable(mb_strtolower($this->getEntityName()));
+        $currentAdapter->setEntityName(mb_strtolower($this->getEntityName()));
         $this->hydrator = $this->container->make(Hydrator::class, ['entityName' => $this->getEntityName()]);
 
         $this->adapter = $this->container->make(ProxyHydratorGate::class, [

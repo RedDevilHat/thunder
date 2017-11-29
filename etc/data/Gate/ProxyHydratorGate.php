@@ -37,6 +37,12 @@ class ProxyHydratorGate implements AdapterInterface
         $this->current_adapter = $adapter;
     }
 
+    public function setEntityName(string $entityName)
+    {
+        // TODO: Implement setEntityName() method.
+    }
+
+
     public function getAll()
     {
         return $this->hydrator->hydrate($this->current_adapter->getAll() ?? []);

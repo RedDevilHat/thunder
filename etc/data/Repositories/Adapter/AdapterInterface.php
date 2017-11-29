@@ -17,6 +17,8 @@ use etc\data\Entity\EntityInterface;
  */
 interface AdapterInterface
 {
+    public function setEntityName(string $entityName);
+
     public function getAll();
 
     public function getById(int $id);

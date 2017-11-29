@@ -39,11 +39,11 @@ class MySQLAdapter implements AdapterInterface
     }
 
     /**
-     * @param string $table
+     * @param string $entityName
      */
-    public function setTable(string $table) : void
+    public function setEntityName(string $entityName) : void
     {
-        $this->table = $table;
+        $this->table = $entityName;
     }
 
     /**
