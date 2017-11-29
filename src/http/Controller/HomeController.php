@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function anyIndex()
     {
-        return ['thunder' => ['say' => 'Hello world'], 'thunder_ver' => '0.0.1-RC1'];
+        return ['thunder' => ['say' => 'Hello world'], 'thunder_ver' => '0.0.1-alpha'];
     }
 }
