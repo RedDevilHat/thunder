@@ -19,10 +19,10 @@ use etc\http\Controller\Controller;
 class HomeController extends Controller
 {
     /**
-     * @return string
+     * @return array
      */
     public function anyIndex()
     {
-        return 'Hello world';
+        return ['thunder' => ['say' => 'Hello world'], 'thunder_ver' => '0.0.1-RC1'];
     }
 }
