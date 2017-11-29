@@ -18,6 +18,8 @@ class JsonResponse implements ResponseInterface
      */
     public static function success($data) : string
     {
+        header('Content-Type: application/json');
+
         return json_encode($data);
     }
 
@@ -29,13 +31,14 @@ class JsonResponse implements ResponseInterface
      */
     public static function error(int $statusCode, string $stacktrace = null) : string
     {
+        header('Content-Type: application/json');
         http_response_code($statusCode);
 
         return json_encode([
             'error' => [
-                'status_code'    => $statusCode,
-                'message'        => StatusHelper::getMessageForCode($statusCode),
-                'stacktrace'     => $stacktrace,
+                'status_code' => $statusCode,
+                'message'     => StatusHelper::getMessageForCode($statusCode),
+                'stacktrace'  => $stacktrace,
             ],
         ]);
 
