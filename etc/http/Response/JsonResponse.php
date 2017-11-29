@@ -27,7 +27,7 @@ class JsonResponse implements ResponseInterface
      *
      * @return string
      */
-    public static function error(int $statusCode, string $stacktrace) : string
+    public static function error(int $statusCode, string $stacktrace = null) : string
     {
         http_response_code($statusCode);
 

@@ -10,33 +10,19 @@ namespace Src\http\Controller;
 
 
 use etc\http\Controller\Controller;
-use Src\Repositories\HomeRepositories;
 
+/**
+ * Class HomeController
+ *
+ * @package Src\http\Controller
+ */
 class HomeController extends Controller
 {
     /**
-     * @return mixed
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
+     * @return string
      */
     public function anyIndex()
     {
-        /** @var HomeRepositories $repo */
-        $repo = $this->container->get('home_repository');
-
-        return $repo->getAll();
-    }
-
-    /**
-     * @return array
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
-     */
-    public function getUser()
-    {
-        /** @var HomeRepositories $repo */
-        $repo = $this->container->get('home_repository');
-        return $repo->getUser();
-
+        return 'Hello world';
     }
 }

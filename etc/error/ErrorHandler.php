@@ -15,12 +15,13 @@ class ErrorHandler
      * @param $message
      * @param $file
      * @param $line
+     *
      * @throws \ErrorException
      */
     public static function handler($errno, $errstr, $errfile, $errline)
     {
         if (error_reporting() !== 0) {  // to keep the @ operator working
-            throw new \ErrorException($errstr, $errno,1, $errfile, $errline);
+            throw new \ErrorException($errstr, $errno, 1, $errfile, $errline);
         }
     }
 }

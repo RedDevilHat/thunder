@@ -22,7 +22,7 @@ interface ThunderUserInterface
      */
     public function setId(int $id): ThunderUserInterface;
     /**
-     * @return mixed
+     * @return string
      */
     public function getUsername(): string;
 
