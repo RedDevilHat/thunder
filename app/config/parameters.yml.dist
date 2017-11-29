@@ -1,6 +1,16 @@
+## DATABASE
+
+# Connection
 default_connection:
+
+# MySQL
 database:
 host:
 username:
 password:
-response_format:
+charset:
+collation:
+lazy:
+
+## RESPONSE FORMATER
+response_format: json

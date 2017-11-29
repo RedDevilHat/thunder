@@ -1,7 +1,7 @@
 
 
 # Parameters
-/app/parameters.yml
+/app/config/parameters.yml
 
 # Managed by Composer
 /bin/*
