@@ -13,6 +13,8 @@ set_error_handler('etc\error\ErrorHandler::handler');
 set_exception_handler('etc\error\ExceptionHandler::handler');
 
 require_once '../app/ServiceProvider/service_provider_bootstrap.php';
+/** @var \Phroute\Phroute\RouteCollector $router */
+$router = $kernel->get('route');
 require_once '../app/Router/router.php';
 
 /** @var \etc\http\Response\ResponseInterface $responseInterface */
