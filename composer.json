@@ -1,6 +1,6 @@
 {
-  "name": "RedDevilHat/thunder",
-  "description": "Simple php7 mvc framework",
+  "name": "thunder/thunder-rest",
+  "description": "Simple php7 mvc rest framework",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
