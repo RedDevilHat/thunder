@@ -8,8 +8,6 @@
 
 namespace src\http\Middleware;
 
-
-use etc\security\ApiAuthInterface;
 use etc\security\AuthGateInterface;
 
 
