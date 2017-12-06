@@ -1,5 +1,5 @@
 {
-  "name": "thunder/thunder-rest",
+  "name": "thunder-mvc/thunder-rest",
   "description": "Simple php7 mvc rest framework",
   "minimum-stability": "stable",
   "license": "MIT",
