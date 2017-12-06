@@ -37,7 +37,7 @@ class Hydrator
      */
     public function hydrate(array $data = null)
     {
-        $result = [];
+        $result = null;
 
         if($data) {
             if (isset($data[0]) && \is_array($data[0])) {

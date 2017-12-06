@@ -9,6 +9,7 @@
 namespace etc\http\Request;
 
 use etc\Kernel;
+use etc\security\Exception\UnauthorizedException;
 
 
 /**
@@ -67,22 +68,27 @@ class Request
         return $fileData;
     }
 
-    public function getHeaders(string $key = null)
-    {
-        $headers = apache_request_headers();
 
-        if ($key) {
-            return $headers[$key];
-        }
-
-        return $headers;
-
-    }
-
-    public function getAuthHeaders()
+    /**
+     * @return string
+     * @throws UnauthorizedException
+     */
+    public function getAuthToken()
     {
         $authKey = Kernel::getParameters('auth_header');
+        $server = $_SERVER;
+        $token = false;
+        foreach ($server as $key => $value) {
+            if($key === 'HTTP_' . str_replace('-', '_', $authKey)) {
+                $token = $value;
+            }
+        }
 
-        return $this->getHeaders($authKey);
+        if($token) {
+            return $token;
+        }
+
+        throw new UnauthorizedException();
+
     }
 }

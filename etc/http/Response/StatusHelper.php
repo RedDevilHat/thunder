@@ -310,10 +310,10 @@ class StatusHelper
 
     public static function getMessageForCode($code) {
 
-
-        return self::$messages[$code];
-
-
+        if(isset(self::$messages[$code])) {
+            return self::$messages[$code];
+        }
+        return null;
     }
 
     public static function isError($code) {

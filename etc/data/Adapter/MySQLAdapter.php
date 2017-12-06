@@ -66,8 +66,13 @@ class MySQLAdapter implements AdapterInterface
         foreach ($criteria as $key => $value) {
             $query->where($key, $operator, $value);
         }
+        $result = $query->get();
 
-        return $query->get();
+        if(count($result) === 1) {
+            return $result[0];
+        }
+
+        return $result;
     }
 
     public function insert(EntityInterface $entity)

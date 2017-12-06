@@ -1,7 +1,7 @@
 <?php
 
+use etc\http\Request\Request;
 use etc\http\Response\ResponseFactory;
-use GeneratedHydrator\Configuration;
 use Phroute\Phroute\RouteCollector;
 
 
@@ -11,4 +11,8 @@ $kernel->set('route', function () {
 
 $kernel->set('response', function () {
     return ResponseFactory::getResponse();
+});
+
+$kernel->set('request', function () {
+    return new Request();
 });

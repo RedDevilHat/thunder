@@ -14,5 +14,5 @@ interface AuthGateInterface
     /**
      * @return bool
      */
-    public function checkGuard() : bool;
+    public function checkGuard();
 }

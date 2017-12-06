@@ -6,7 +6,7 @@
  * Time: 13:16
  */
 
-namespace src\Security;
+namespace Src\Security;
 
 
 class SecurityService

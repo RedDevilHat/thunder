@@ -6,7 +6,7 @@
  * Time: 12:30
  */
 
-namespace src\Security;
+namespace Src\Security;
 
 
 use DI\Container;
@@ -27,11 +27,12 @@ class AuthTokenSecurity implements ApiAuthTokenInterface
      * AuthTokenSecurity constructor.
      *
      * @param Request $request
+     * @param Container $container
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, Container $container)
     {
         $this->request   = $request;
-        $this->container = Kernel::getContainer();
+        $this->container = $container;
     }
 
     /**
@@ -56,9 +57,15 @@ class AuthTokenSecurity implements ApiAuthTokenInterface
         // TODO: Implement expiredToken() method.
     }
 
+    /**
+     * @return User
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
+     * @throws \etc\security\Exception\UnauthorizedException
+     */
     public function getUserByToken() : User
     {
-        $token = $this->request->getAuthHeaders();
+        $token = $this->request->getAuthToken();
 
         /** @var TokenRepository $tokenRepository */
         $tokenRepository = $this->container->get('token_repository');

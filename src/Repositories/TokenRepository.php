@@ -11,6 +11,7 @@ namespace Src\Repositories;
 
 use etc\data\Repositories\Adapter\AdapterInterface;
 use etc\data\Repositories\Repositories;
+use etc\security\Exception\UnauthorizedException;
 use Src\Entity\Token;
 use Src\Entity\User;
 
@@ -28,8 +29,8 @@ class TokenRepository extends Repositories
 
     /**
      * @param string $token
-     *
      * @return User
+     * @throws UnauthorizedException
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
@@ -38,12 +39,16 @@ class TokenRepository extends Repositories
         /** @var Token $dbToken */
         $dbToken = $this->adapter->find(['token' => $token]);
 
-        /** @var UserRepositories $userRepository */
-        $userRepository = $this->container->get('user_repository');
+        if($dbToken !== null) {
+            /** @var UserRepositories $userRepository */
+            $userRepository = $this->container->get('user_repository');
 
-        /** @var User $user */
-        $user = $userRepository->getById($dbToken->getUserId());
+            /** @var User $user */
+            $user = $userRepository->getById($dbToken->getUserId());
 
-        return $user;
+            return $user;
+        }
+
+        throw new UnauthorizedException();
     }
 }

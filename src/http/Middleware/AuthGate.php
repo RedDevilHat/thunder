@@ -6,17 +6,36 @@
  * Time: 11:43
  */
 
-namespace src\http\Middleware;
+namespace Src\http\Middleware;
 
 use etc\security\AuthGateInterface;
+use Src\Security\AuthTokenSecurity;
 
-
+/**
+ * Class AuthGate
+ * @package src\http\Middleware
+ */
 class AuthGate implements AuthGateInterface
 {
 
-    public function checkGuard() : bool
+    /** @var AuthTokenSecurity */
+    private $security;
+
+    /**
+     * AuthGate constructor.
+     * @param AuthTokenSecurity $security
+     */
+    public function __construct(AuthTokenSecurity $security)
     {
-        // TODO: Implement checkGuard() method.
+        $this->security = $security;
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkGuard()
+    {
+        $this->security->getUserByToken();
     }
 
 }
