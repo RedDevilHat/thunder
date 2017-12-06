@@ -2,7 +2,12 @@
   "name": "thunder-mvc/thunder-rest",
   "description": "Simple php7 mvc rest framework",
   "minimum-stability": "stable",
+  "keywords": [
+    "framework",
+    "thunder-mvc"
+  ],
   "license": "MIT",
+  "type": "project",
   "authors": [
     {
       "name": "Nikita Rassamakhin",
