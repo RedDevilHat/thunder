@@ -23,8 +23,6 @@ class HomeController extends Controller
      */
     public function anyIndex()
     {
-        $refer = $this->request->get('refer');
-
         return ['thunder' => ['say' => 'Hello world'], 'thunder_ver' => '0.0.1-alpha', 'refer' => $refer];
     }
 }
