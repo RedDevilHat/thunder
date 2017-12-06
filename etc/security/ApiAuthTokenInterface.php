@@ -2,7 +2,9 @@
 
 namespace etc\security;
 
-interface ApiAuthInterface
+use Src\Entity\User;
+
+interface ApiAuthTokenInterface
 {
     /**
      * @return string
@@ -10,18 +12,12 @@ interface ApiAuthInterface
     public function createToken() : string;
 
     /**
-     * @return bool
-     */
-    public function checkGuard() : bool;
-
-
-    /**
      * @return void
      */
     public function expiredToken() : void;
 
     /**
-     * @return ThunderUserInterface
+     * @return User
      */
-    public function getUser() : ThunderUserInterface;
+    public function getUserByToken() : User;
 }

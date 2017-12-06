@@ -8,6 +8,8 @@
 
 namespace etc\http\Request;
 
+use etc\Kernel;
+
 
 /**
  * Class Request
@@ -63,5 +65,24 @@ class Request
         }
 
         return $fileData;
+    }
+
+    public function getHeaders(string $key = null)
+    {
+        $headers = apache_request_headers();
+
+        if ($key) {
+            return $headers[$key];
+        }
+
+        return $headers;
+
+    }
+
+    public function getAuthHeaders()
+    {
+        $authKey = Kernel::getParameters('auth_header');
+
+        return $this->getHeaders($authKey);
     }
 }
