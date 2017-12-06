@@ -34,10 +34,19 @@ class AuthTokenSecurity implements ApiAuthTokenInterface
         $this->container = Kernel::getContainer();
     }
 
+    /**
+     * @return string
+     * @throws \RuntimeException
+     * @throws \Exception
+     */
     public function createToken() : string
     {
-        $bytes = openssl_random_pseudo_bytes(Kernel::getParameters('token_lenght'),
-            bin2hex(random_bytes(Kernel::getParameters('secret_token_lenght'))));
+        $isSourceStrong = bin2hex(random_bytes(Kernel::getParameters('secret_token_lenght')));
+        $bytes          = openssl_random_pseudo_bytes(Kernel::getParameters('token_lenght'), $isSourceStrong);
+
+        if (false === $isSourceStrong || false === $bytes) {
+            throw new \RuntimeException('IV generation failed');
+        }
 
         return bin2hex($bytes);
     }
