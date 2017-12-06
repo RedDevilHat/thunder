@@ -28,8 +28,8 @@ class ProxyHydratorGate implements AdapterInterface
     /**
      * Gate constructor.
      *
-     * @param Container $container
-     * @param Hydrator $hydrator
+     * @param Container        $container
+     * @param Hydrator         $hydrator
      * @param AdapterInterface $adapter
      */
     public function __construct(Container $container, Hydrator $hydrator, AdapterInterface $adapter)
@@ -57,7 +57,7 @@ class ProxyHydratorGate implements AdapterInterface
 
     public function find(array $criteria, string $operator = null)
     {
-        return $this->hydrator->hydrate($this->current_adapter->find($criteria,$operator));
+        return $this->hydrator->hydrate($this->current_adapter->find($criteria, $operator));
     }
 
     public function insert(EntityInterface $entity)
@@ -82,6 +82,11 @@ class ProxyHydratorGate implements AdapterInterface
 
     public function entityToArray(EntityInterface $entity)
     {
-        // TODO: Implement entityToArray() method.
+        return $this->current_adapter->entityToArray($entity);
+    }
+
+    public function processedRawData(array $data)
+    {
+        return $this->hydrator->hydrate($data);
     }
 }

@@ -11,9 +11,7 @@ namespace etc\data\Repositories\Adapter;
 
 use Database\Connection;
 use DI\Container;
-use function DI\value;
 use etc\ClassNameHelper;
-use etc\data\Entity\Entity;
 use etc\data\Entity\EntityInterface;
 use etc\data\Hydrator\Hydrator;
 use etc\data\MySQL\MySQLConnection;
@@ -108,5 +106,10 @@ class MySQLAdapter implements AdapterInterface
         ]);
 
         return $hydrator->extract($entity);
+    }
+
+    public function processedRawData(array $data)
+    {
+        // TODO implement if need
     }
 }

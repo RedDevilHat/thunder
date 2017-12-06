@@ -34,4 +34,6 @@ interface AdapterInterface
     public function getRawConnection();
 
     public function entityToArray(EntityInterface $entity);
+
+    public function processedRawData(array $data);
 }
