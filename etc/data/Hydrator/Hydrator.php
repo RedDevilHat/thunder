@@ -25,9 +25,9 @@ class Hydrator
      */
     public function __construct(string $entityName)
     {
-        $this->classname = $this->classname.$entityName;
-        $this->hydrator  = (new Configuration($this->classname))->createFactory()->getHydratorClass();
-        $this->hydrator  = new $this->hydrator;
+        $this->classname = $this->classname . $entityName;
+        $this->hydrator = (new Configuration($this->classname))->createFactory()->getHydratorClass();
+        $this->hydrator = new $this->hydrator;
     }
 
     /**
@@ -39,7 +39,7 @@ class Hydrator
     {
         $result = null;
 
-        if($data) {
+        if ($data) {
             if (isset($data[0]) && \is_array($data[0])) {
                 foreach ($data as $array) {
                     $result[] = $this->hydrator->hydrate($array, new $this->classname);
@@ -57,7 +57,7 @@ class Hydrator
      *
      * @return array
      */
-    public function extract($entity) : array
+    public function extract($entity): array
     {
         return $this->hydrator->extract($entity);
     }

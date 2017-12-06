@@ -32,14 +32,14 @@ class ProxyHydratorGate implements AdapterInterface
     /**
      * Gate constructor.
      *
-     * @param Container        $container
-     * @param Hydrator         $hydrator
+     * @param Container $container
+     * @param Hydrator $hydrator
      * @param AdapterInterface $adapter
      */
     public function __construct(Container $container, Hydrator $hydrator, AdapterInterface $adapter)
     {
-        $this->container       = $container;
-        $this->hydrator        = $hydrator;
+        $this->container = $container;
+        $this->hydrator = $hydrator;
         $this->current_adapter = $adapter;
     }
 
@@ -76,7 +76,7 @@ class ProxyHydratorGate implements AdapterInterface
     /**
      * Find data in table, need criteria
      *
-     * @param array       $criteria like ['field_name' => 'value']
+     * @param array $criteria like ['field_name' => 'value']
      * @param string|null $operator not required params, avaible all sql where operators
      *
      * @return mixed

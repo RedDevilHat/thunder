@@ -66,7 +66,7 @@ class StatusHelper
     const HTTP_USE_PROXY = 305;
 
 
-    const HTTP_UNUSED= 306;
+    const HTTP_UNUSED = 306;
 
 
     const HTTP_TEMPORARY_REDIRECT = 307;
@@ -81,7 +81,7 @@ class StatusHelper
     const HTTP_BAD_REQUEST = 400;
 
 
-    const HTTP_UNAUTHORIZED  = 401;
+    const HTTP_UNAUTHORIZED = 401;
 
 
     const HTTP_PAYMENT_REQUIRED = 402;
@@ -153,153 +153,152 @@ class StatusHelper
     const HTTP_VERSION_NOT_SUPPORTED = 505;
 
 
-
     private static $messages = array(
 
         0 => 'unknown',
         // [Informational 1xx]
 
 
-        100=>'100 Continue',
+        100 => '100 Continue',
 
 
-        101=>'101 Switching Protocols',
+        101 => '101 Switching Protocols',
 
 
         // [Successful 2xx]
 
 
-        200=>'200 OK',
+        200 => '200 OK',
 
 
-        201=>'201 Created',
+        201 => '201 Created',
 
 
-        202=>'202 Accepted',
+        202 => '202 Accepted',
 
 
-        203=>'203 Non-Authoritative Information',
+        203 => '203 Non-Authoritative Information',
 
 
-        204=>'204 No Content',
+        204 => '204 No Content',
 
 
-        205=>'205 Reset Content',
+        205 => '205 Reset Content',
 
 
-        206=>'206 Partial Content',
+        206 => '206 Partial Content',
 
 
         // [Redirection 3xx]
 
 
-        300=>'300 Multiple Choices',
+        300 => '300 Multiple Choices',
 
 
-        301=>'301 Moved Permanently',
+        301 => '301 Moved Permanently',
 
 
-        302=>'302 Found',
+        302 => '302 Found',
 
 
-        303=>'303 See Other',
+        303 => '303 See Other',
 
 
-        304=>'304 Not Modified',
+        304 => '304 Not Modified',
 
 
-        305=>'305 Use Proxy',
+        305 => '305 Use Proxy',
 
 
-        306=>'306 (Unused)',
+        306 => '306 (Unused)',
 
 
-        307=>'307 Temporary Redirect',
+        307 => '307 Temporary Redirect',
 
 
         // [Client Error 4xx]
 
 
-        400=>'400 Bad Request',
+        400 => '400 Bad Request',
 
 
-        401=>'401 Unauthorized',
+        401 => '401 Unauthorized',
 
 
-        402=>'402 Payment Required',
+        402 => '402 Payment Required',
 
 
-        403=>'403 Forbidden',
+        403 => '403 Forbidden',
 
 
-        404=>'404 Not Found',
+        404 => '404 Not Found',
 
 
-        405=>'405 Method Not Allowed',
+        405 => '405 Method Not Allowed',
 
 
-        406=>'406 Not Acceptable',
+        406 => '406 Not Acceptable',
 
 
-        407=>'407 Proxy Authentication Required',
+        407 => '407 Proxy Authentication Required',
 
 
-        408=>'408 Request Timeout',
+        408 => '408 Request Timeout',
 
 
-        409=>'409 Conflict',
+        409 => '409 Conflict',
 
 
-        410=>'410 Gone',
+        410 => '410 Gone',
 
 
-        411=>'411 Length Required',
+        411 => '411 Length Required',
 
 
-        412=>'412 Precondition Failed',
+        412 => '412 Precondition Failed',
 
 
-        413=>'413 Request Entity Too Large',
+        413 => '413 Request Entity Too Large',
 
 
-        414=>'414 Request-URI Too Long',
+        414 => '414 Request-URI Too Long',
 
 
-        415=>'415 Unsupported Media Type',
+        415 => '415 Unsupported Media Type',
 
 
-        416=>'416 Requested Range Not Satisfiable',
+        416 => '416 Requested Range Not Satisfiable',
 
 
-        417=>'417 Expectation Failed',
+        417 => '417 Expectation Failed',
 
 
         // [Server Error 5xx]
 
 
-        500=>'500 Internal Server Error',
+        500 => '500 Internal Server Error',
 
 
-        501=>'501 Not Implemented',
+        501 => '501 Not Implemented',
 
 
-        502=>'502 Bad Gateway',
+        502 => '502 Bad Gateway',
 
 
-        503=>'503 Service Unavailable',
+        503 => '503 Service Unavailable',
 
 
-        504=>'504 Gateway Timeout',
+        504 => '504 Gateway Timeout',
 
 
-        505=>'505 HTTP Version Not Supported'
+        505 => '505 HTTP Version Not Supported'
 
 
     );
 
 
-
-    public static function httpHeaderFor($code) {
+    public static function httpHeaderFor($code)
+    {
 
 
         return 'HTTP/1.1 ' . self::$messages[$code];
@@ -308,15 +307,17 @@ class StatusHelper
     }
 
 
-    public static function getMessageForCode($code) {
+    public static function getMessageForCode($code)
+    {
 
-        if(isset(self::$messages[$code])) {
+        if (isset(self::$messages[$code])) {
             return self::$messages[$code];
         }
         return null;
     }
 
-    public static function isError($code) {
+    public static function isError($code)
+    {
 
 
         return is_numeric($code) && $code >= self::HTTP_BAD_REQUEST;
@@ -324,7 +325,8 @@ class StatusHelper
 
     }
 
-    public static function canHaveBody($code) {
+    public static function canHaveBody($code)
+    {
 
 
         return

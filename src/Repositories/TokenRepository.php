@@ -34,12 +34,12 @@ class TokenRepository extends Repositories
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
-    public function getUser(string $token) : User
+    public function getUser(string $token): User
     {
         /** @var Token $dbToken */
         $dbToken = $this->adapter->find(['token' => $token]);
 
-        if($dbToken !== null) {
+        if ($dbToken !== null) {
             /** @var UserRepositories $userRepository */
             $userRepository = $this->container->get('user_repository');
 

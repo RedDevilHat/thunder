@@ -3,7 +3,7 @@ require_once '../vendor/autoload.php';
 
 \etc\Kernel::init();
 /** @var \DI\Container $kernel */
-$kernel     = \etc\Kernel::getContainer();
+$kernel = \etc\Kernel::getContainer();
 $parameters = \etc\Kernel::getParameters();
 /**
  * Error and Exception handling
@@ -19,9 +19,9 @@ require_once '../app/Router/router.php';
 
 /** @var \etc\http\Response\ResponseInterface $responseInterface */
 $responseInterface = $kernel->get('response');
-$routData          = $router->getData();
-$dispatcher        = new Phroute\Phroute\Dispatcher($routData);
-$response          = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'],
+$routData = $router->getData();
+$dispatcher = new Phroute\Phroute\Dispatcher($routData);
+$response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'],
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 // Print out the value returned from the dispatched function

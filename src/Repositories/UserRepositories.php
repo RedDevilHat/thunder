@@ -9,7 +9,6 @@
 namespace Src\Repositories;
 
 
-use Database\Connection;
 use etc\data\Repositories\Adapter\AdapterInterface;
 use etc\data\Repositories\Repositories;
 use Src\Entity\User;

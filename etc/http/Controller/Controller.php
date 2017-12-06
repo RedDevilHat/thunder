@@ -28,6 +28,6 @@ abstract class Controller
     public function __construct()
     {
         $this->container = Kernel::getContainer();
-        $this->request   = $this->container->make(Request::class);
+        $this->request = $this->container->make(Request::class);
     }
 }

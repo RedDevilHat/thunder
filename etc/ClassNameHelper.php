@@ -13,7 +13,7 @@ use etc\data\Repositories\Exception\EntityNotFoundException;
 
 class ClassNameHelper
 {
-    public static function getEntityClassNameWithoutNameSpace(string $classname) : string
+    public static function getEntityClassNameWithoutNameSpace(string $classname): string
     {
         return substr($classname, 11);
     }
@@ -34,7 +34,7 @@ class ClassNameHelper
     | (?<=[A-Z])      # Or g2of2; Position is after uppercase,
       (?=[A-Z][a-z])  # and before upper-then-lower case.
     /x';
-        $a      = preg_split($re, $ccWord);
+        $a = preg_split($re, $ccWord);
 
         if ($a) {
             return $a[0];

@@ -20,12 +20,12 @@ interface ResponseInterface
      *
      * @return string
      */
-    public static function success($data) : string;
+    public static function success($data): string;
 
     /**
      * @param string $stacktrace
      *
      * @return string
      */
-    public static function error(int $statusCode, string $stacktrace = null) : string;
+    public static function error(int $statusCode, string $stacktrace = null): string;
 }

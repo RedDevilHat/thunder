@@ -43,7 +43,7 @@ abstract class Repositories
     {
         $this->container = Kernel::getContainer();
 
-        if ( !$this->connection) {
+        if (!$this->connection) {
             $this->connection = Kernel::getParameters('default_connection');
         }
 
@@ -55,8 +55,8 @@ abstract class Repositories
 
         $this->adapter = $this->container->make(ProxyHydratorGate::class, [
             'container' => $this->container,
-            'hydrator'  => $this->hydrator,
-            'adapter'   => $currentAdapter,
+            'hydrator' => $this->hydrator,
+            'adapter' => $currentAdapter,
         ]);
     }
 
@@ -64,7 +64,7 @@ abstract class Repositories
      * @return string
      * @throws EntityNotFoundException
      */
-    private function getEntityName() : string
+    private function getEntityName(): string
     {
         return ClassNameHelper::createTableNameFromRepositoriesName(get_class($this));
     }

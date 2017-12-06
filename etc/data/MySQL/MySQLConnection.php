@@ -55,8 +55,15 @@ class MySQLConnection implements DataConnection
      * @param string $charset
      * @param string $collation
      */
-    public function __construct(string $database, string $host, string $username, string $password, string $charset, string $collation, bool $lazy)
-    {
+    public function __construct(
+        string $database,
+        string $host,
+        string $username,
+        string $password,
+        string $charset,
+        string $collation,
+        bool $lazy
+    ) {
         $this->database = $database;
         $this->host = $host;
         $this->username = $username;
@@ -66,32 +73,30 @@ class MySQLConnection implements DataConnection
         $this->lazy = $lazy;
     }
 
+    public function init(): Connection
+    {
+        if (!$this->connection) {
+            $this->setConnection();
+        }
+
+        return $this->connection;
+    }
 
     public function setConnection()
     {
         $factory = new ConnectionFactory();
         $this->connection = $factory->make(array(
-            'driver'    => $this->type,
-            'database'  => $this->database,
-            'host'      => $this->host,
-            'username'  => $this->username,
-            'password'  => $this->password,
-            'charset'   => $this->charset,
+            'driver' => $this->type,
+            'database' => $this->database,
+            'host' => $this->host,
+            'username' => $this->username,
+            'password' => $this->password,
+            'charset' => $this->charset,
             'collation' => $this->collation,
 
             // Don't connect until we execute our first query
-            'lazy'      => $this->lazy,
+            'lazy' => $this->lazy,
         ));
-    }
-
-
-    public function init() : Connection
-    {
-        if(!$this->connection) {
-            $this->setConnection();
-        }
-
-        return $this->connection;
     }
 
 }

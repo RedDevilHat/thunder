@@ -9,15 +9,15 @@ interface ApiAuthTokenInterface
     /**
      * @return string
      */
-    public function createToken() : string;
+    public function createToken(): string;
 
     /**
      * @return void
      */
-    public function expiredToken() : void;
+    public function expiredToken(): void;
 
     /**
      * @return User
      */
-    public function getUserByToken() : User;
+    public function getUserByToken(): User;
 }

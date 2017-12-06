@@ -42,7 +42,7 @@ class MySQLAdapter implements AdapterInterface
     /**
      * @param string $entityName
      */
-    public function setEntityName(string $entityName) : void
+    public function setEntityName(string $entityName): void
     {
         $this->table = $entityName;
     }
@@ -68,7 +68,7 @@ class MySQLAdapter implements AdapterInterface
         }
         $result = $query->get();
 
-        if(count($result) === 1) {
+        if (count($result) === 1) {
             return $result[0];
         }
 
@@ -78,6 +78,11 @@ class MySQLAdapter implements AdapterInterface
     public function insert(EntityInterface $entity)
     {
         $this->transport->table($this->table)->insert($this->entityToArray($entity));
+    }
+
+    public function entityToArray(EntityInterface $entity)
+    {
+        // TODO implement if need
     }
 
     public function update(EntityInterface $entity)
@@ -98,11 +103,6 @@ class MySQLAdapter implements AdapterInterface
     public function getRawConnection()
     {
         return $this->transport;
-    }
-
-    public function entityToArray(EntityInterface $entity)
-    {
-        // TODO implement if need
     }
 
     public function processedRawData(array $data)

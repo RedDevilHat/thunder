@@ -10,7 +10,6 @@ namespace src\Guard\ApiGate;
 
 use etc\security\ApiAuthInterface;
 use etc\security\ThunderUserInterface;
-use Src\Entity\User;
 
 /**
  * Class ApiAuthInterfaceGate
@@ -43,7 +42,7 @@ class ApiAuthInterfaceGate implements ApiAuthInterface
     /**
      * @return ThunderUserInterface
      */
-    public function getUser() : ThunderUserInterface
+    public function getUser(): ThunderUserInterface
     {
         // TODO: Implement getUser() method.
     }

@@ -58,7 +58,7 @@ interface ThunderUserInterface
     /**
      * @return int
      */
-    public function getRoleId():int;
+    public function getRoleId(): int;
 
     /**
      * @param int $role

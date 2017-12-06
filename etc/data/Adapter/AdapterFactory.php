@@ -28,6 +28,6 @@ class AdapterFactory
     {
         self::$container = Kernel::getContainer();
 
-        return self::$container->get($connetion.'-adapter');
+        return self::$container->get($connetion . '-adapter');
     }
 }

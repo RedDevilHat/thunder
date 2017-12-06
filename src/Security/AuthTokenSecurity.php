@@ -31,7 +31,7 @@ class AuthTokenSecurity implements ApiAuthTokenInterface
      */
     public function __construct(Request $request, Container $container)
     {
-        $this->request   = $request;
+        $this->request = $request;
         $this->container = $container;
     }
 
@@ -40,10 +40,10 @@ class AuthTokenSecurity implements ApiAuthTokenInterface
      * @throws \RuntimeException
      * @throws \Exception
      */
-    public function createToken() : string
+    public function createToken(): string
     {
         $isSourceStrong = bin2hex(random_bytes(Kernel::getParameters('secret_token_lenght')));
-        $bytes          = openssl_random_pseudo_bytes(Kernel::getParameters('token_lenght'), $isSourceStrong);
+        $bytes = openssl_random_pseudo_bytes(Kernel::getParameters('token_lenght'), $isSourceStrong);
 
         if (false === $isSourceStrong || false === $bytes) {
             throw new \RuntimeException('IV generation failed');
@@ -52,7 +52,7 @@ class AuthTokenSecurity implements ApiAuthTokenInterface
         return bin2hex($bytes);
     }
 
-    public function expiredToken() : void
+    public function expiredToken(): void
     {
         // TODO: Implement expiredToken() method.
     }
@@ -63,7 +63,7 @@ class AuthTokenSecurity implements ApiAuthTokenInterface
      * @throws \DI\NotFoundException
      * @throws \etc\security\Exception\UnauthorizedException
      */
-    public function getUserByToken() : User
+    public function getUserByToken(): User
     {
         $token = $this->request->getAuthToken();
 

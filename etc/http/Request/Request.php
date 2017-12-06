@@ -24,7 +24,7 @@ class Request
      *
      * @return mixed
      */
-    public function get(string $key = null) : mixed
+    public function get(string $key = null): mixed
     {
         $getData = $_GET;
 
@@ -40,7 +40,7 @@ class Request
      *
      * @return mixed
      */
-    public function post(string $key = null) : mixed
+    public function post(string $key = null): mixed
     {
         $postData = $_POST;
 
@@ -57,7 +57,7 @@ class Request
      *
      * @return mixed
      */
-    public function files(string $key = null) : mixed
+    public function files(string $key = null): mixed
     {
         $fileData = $_FILES;
 
@@ -79,12 +79,12 @@ class Request
         $server = $_SERVER;
         $token = false;
         foreach ($server as $key => $value) {
-            if($key === 'HTTP_' . str_replace('-', '_', $authKey)) {
+            if ($key === 'HTTP_' . str_replace('-', '_', $authKey)) {
                 $token = $value;
             }
         }
 
-        if($token) {
+        if ($token) {
             return $token;
         }
 

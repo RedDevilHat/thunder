@@ -14,24 +14,24 @@ interface RoleInterface
     /**
      * @return int
      */
-    public function getId() : int;
+    public function getId(): int;
 
     /**
      * @param int $id
      *
      * @return RoleInterface
      */
-    public function setId(int $id) : RoleInterface;
+    public function setId(int $id): RoleInterface;
 
     /**
      * @return string
      */
-    public function getName() : string;
+    public function getName(): string;
 
     /**
      * @param string $username
      *
      * @return RoleInterface
      */
-    public function setName(string $username) : RoleInterface;
+    public function setName(string $username): RoleInterface;
 }

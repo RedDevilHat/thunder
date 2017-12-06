@@ -20,10 +20,10 @@ interface RbacInterface
      *
      * @return RoleInterface
      */
-    public function getRole(ThunderUserInterface $user) : RoleInterface;
+    public function getRole(ThunderUserInterface $user): RoleInterface;
 
     /**
      * @param ThunderUserInterface $user
      */
-    public function setRole(ThunderUserInterface $user) : void;
+    public function setRole(ThunderUserInterface $user): void;
 }

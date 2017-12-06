@@ -16,7 +16,7 @@ class ResponseFactory
     /**
      * @return ResponseInterface
      */
-    public static function getResponse() : ResponseInterface
+    public static function getResponse(): ResponseInterface
     {
         switch (Kernel::getParameters('response_format')) {
             case 'json':

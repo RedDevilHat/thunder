@@ -27,7 +27,7 @@ class Token extends Entity
     /**
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -37,7 +37,7 @@ class Token extends Entity
      *
      * @return Token
      */
-    public function setId(int $id) : Token
+    public function setId(int $id): Token
     {
         $this->id = $id;
 
@@ -47,7 +47,7 @@ class Token extends Entity
     /**
      * @return string
      */
-    public function getToken() : string
+    public function getToken(): string
     {
         return $this->token;
     }
@@ -57,7 +57,7 @@ class Token extends Entity
      *
      * @return Token
      */
-    public function setToken(string $token) : Token
+    public function setToken(string $token): Token
     {
         $this->token = $token;
 
@@ -67,7 +67,7 @@ class Token extends Entity
     /**
      * @return int
      */
-    public function getUserId() : int
+    public function getUserId(): int
     {
         return $this->user_id;
     }
@@ -77,7 +77,7 @@ class Token extends Entity
      *
      * @return Token
      */
-    public function setUserId(int $user_id) : Token
+    public function setUserId(int $user_id): Token
     {
         $this->user_id = $user_id;
 
@@ -87,7 +87,7 @@ class Token extends Entity
     /**
      * @return int
      */
-    public function getExpiredAt() : int
+    public function getExpiredAt(): int
     {
         return $this->expired_at;
     }
@@ -97,7 +97,7 @@ class Token extends Entity
      *
      * @return Token
      */
-    public function setExpiredAt(int $expired_at) : Token
+    public function setExpiredAt(int $expired_at): Token
     {
         $this->expired_at = $expired_at;
 

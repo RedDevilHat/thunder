@@ -40,11 +40,11 @@ class ExceptionHandler
         }
 
 
-        echo $response->error($code, "Fatal error ".
-                                     "Uncaught exception: '".get_class($exception)."' ".
-                                     "Message: '".$exception->getMessage()."' ".
-                                     "Stack trace:".$exception->getTraceAsString()." ".
-                                     "Thrown in '".$exception->getFile()."' on line ".$exception->getLine());
+        echo $response->error($code, "Fatal error " .
+            "Uncaught exception: '" . get_class($exception) . "' " .
+            "Message: '" . $exception->getMessage() . "' " .
+            "Stack trace:" . $exception->getTraceAsString() . " " .
+            "Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine());
 
         return 0;
     }
