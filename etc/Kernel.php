@@ -21,9 +21,6 @@ class Kernel
     /** @var array */
     private static $parameters;
 
-    /** @var ServiceProvider */
-    private static $serviceprovide;
-
     /**
      * @return Container
      */
@@ -42,7 +39,7 @@ class Kernel
     {
         if (self::$container === null) {
             self::$container = ContainerBuilder::buildDevContainer();
-            self::$parameters = Yaml::parse(file_get_contents('../app/config/parameters.yml'));
+            self::$parameters = Yaml::parse(file_get_contents(__DIR__ . '/../app/config/parameters.yml'));
         }
     }
 

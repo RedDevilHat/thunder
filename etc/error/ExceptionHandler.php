@@ -12,6 +12,7 @@ namespace etc\error;
 use etc\http\Response\ResponseFactory;
 use etc\http\Response\ResponseInterface;
 use etc\http\Response\StatusHelper;
+use etc\security\Exception\UnauthorizedException;
 use Phroute\Phroute\Exception\HttpMethodNotAllowedException;
 use Phroute\Phroute\Exception\HttpRouteNotFoundException;
 
@@ -35,7 +36,12 @@ class ExceptionHandler
             echo $response->error($code);
 
             return 0;
-        } else {
+        } elseif ($exception instanceof UnauthorizedException) {
+            echo $response->error($exception->getCode());
+
+            return 0;
+        }
+        else {
             $code = $exception->getCode() !== 0 ? $exception->getCode() : StatusHelper::HTTP_INTERNAL_SERVER_ERROR;
         }
 

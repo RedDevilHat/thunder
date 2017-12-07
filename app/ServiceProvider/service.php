@@ -4,7 +4,6 @@ use etc\http\Request\Request;
 use etc\http\Response\ResponseFactory;
 use Phroute\Phroute\RouteCollector;
 
-
 $kernel->set('route', function () {
     return new RouteCollector();
 });
@@ -15,4 +14,11 @@ $kernel->set('response', function () {
 
 $kernel->set('request', function () {
     return new Request();
+});
+
+$kernel->set('console', function () use ($kernel) {
+    return $kernel->make(\Symfony\Component\Console\Application::class, [
+        'name' => 'Thunder',
+        'version' => '0.0.1-alpha'
+    ]);
 });
