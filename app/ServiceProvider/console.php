@@ -7,10 +7,11 @@
  */
 
 $kernel->call(function () use ($kernel) {
-     /** @var \Symfony\Component\Console\Application $console */
-     $console = $kernel->get('console');
+    /** @var \Symfony\Component\Console\Application $console */
+    $console = $kernel->get('console');
 
-     $console->add(new \Symfony\Component\Console\Command\ListCommand());
-     $console->add(new \Src\Console\HelloWorldCommand());
-     $console->run();
+    $console->add(new \Symfony\Component\Console\Command\ListCommand());
+    $console->add(new \Src\Console\HelloWorldCommand());
+    $console->add(new \etc\console\MigrationMakeCommand());
+    $console->run();
 });

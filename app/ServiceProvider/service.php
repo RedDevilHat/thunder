@@ -16,9 +16,14 @@ $kernel->set('request', function () {
     return new Request();
 });
 
+$kernel->set('fs', function () {
+    return new Symfony\Component\Filesystem\Filesystem();
+});
+
 $kernel->set('console', function () use ($kernel) {
     return $kernel->make(\Symfony\Component\Console\Application::class, [
-        'name' => 'Thunder',
-        'version' => '0.0.1-alpha'
+        'name'    => 'Thunder',
+        'version' => '0.0.1-alpha',
     ]);
 });
+
