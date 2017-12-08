@@ -4,8 +4,6 @@
 /app/config/parameters.yml
 
 # Managed by Composer
-/bin/*
-!bin/console
 /vendor
 
 # Assets and user uploads
