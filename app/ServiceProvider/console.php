@@ -13,5 +13,6 @@ $kernel->call(function () use ($kernel) {
     $console->add(new \Symfony\Component\Console\Command\ListCommand());
     $console->add(new \Src\Console\HelloWorldCommand());
     $console->add(new \etc\console\MigrationMakeCommand());
+    $console->add(new \etc\console\MigrationCommand());
     $console->run();
 });

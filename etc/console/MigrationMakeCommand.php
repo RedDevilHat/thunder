@@ -54,6 +54,6 @@ class MigrationMakeCommand extends ConsoleCommandAbstract
         /** @var Filesystem $fs */
         $fs = $this->container->get('fs');
 
-        $fs->dumpFile(__DIR__.'\..\..\src\Migration\\'.$name.'.php', $class);
+        $fs->dumpFile(__DIR__.'/../../src/Migration/'.$name.'.php', $class);
     }
 }

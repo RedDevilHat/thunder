@@ -9,7 +9,9 @@
 namespace etc\data\Migration;
 
 
+use etc\data\DataConnection;
 use etc\data\Repositories\Adapter\AdapterInterface;
+use etc\Kernel;
 
 /**
  * Class Migration
@@ -20,24 +22,20 @@ abstract class Migration
 {
     /** @var string */
     protected $db;
-    /** @var AdapterInterface */
+
     private $connection;
 
     /**
      * Migration constructor.
      *
-     * @param $connection
-     * @param $db
      */
-    public function __construct(AdapterInterface $connection, string $db)
+    public function __construct()
     {
-        $this->connection = $connection;
-        $this->db         = $db;
+       $this->connection = Kernel::getContainer()->get($this->db);
     }
 
-    /**
-     * @return AdapterInterface
-     */
+
+
     public function getConnection()
     {
         return $this->connection;
