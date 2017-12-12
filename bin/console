@@ -8,6 +8,16 @@ require_once __DIR__.'/../app/ServiceProvider/service_provider_bootstrap.php';
 //umask(0000);
 set_time_limit(0);
 
-$kernel->get('console');
-
+try {
+    $kernel->get('console');
+} catch (InvalidArgumentException $exception) {
+    echo $exception->getMessage();
+    exit(1);
+} catch (\DI\NotFoundException $exception) {
+    echo $exception->getMessage();
+    exit(1);
+} catch (\DI\DependencyException $exception) {
+    echo $exception->getMessage();
+    exit(1);
+}
 exit(0);
