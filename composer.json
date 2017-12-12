@@ -32,7 +32,8 @@
     "colinodell/json5": "^1.0",
     "symfony/console": "^4.0",
     "nette/php-generator": "^3.1",
-    "symfony/filesystem": "^4.0"
+    "symfony/filesystem": "^4.0",
+    "robmorgan/phinx": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.4"

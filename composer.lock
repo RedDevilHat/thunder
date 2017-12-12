@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-  "content-hash": "c8d9516bb85c38387f86a0df73098041",
+  "content-hash": "fa6b50b1f1b5794f39bebd67a8379606",
     "packages": [
         {
             "name": "colinodell/json5",
@@ -1083,6 +1083,77 @@
             "time": "2016-10-10T12:19:37+00:00"
         },
         {
+          "name": "robmorgan/phinx",
+          "version": "dev-master",
+          "source": {
+            "type": "git",
+            "url": "https://github.com/cakephp/phinx.git",
+            "reference": "a10f73bf75884727cd9d861d0591d5dd110ed0e2"
+          },
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cakephp/phinx/zipball/a10f73bf75884727cd9d861d0591d5dd110ed0e2",
+            "reference": "a10f73bf75884727cd9d861d0591d5dd110ed0e2",
+            "shasum": ""
+          },
+          "require": {
+            "php": ">=5.4",
+            "symfony/config": "~2.8|~3.0|~4.0",
+            "symfony/console": "~2.8|~3.0|~4.0",
+            "symfony/yaml": "~2.8|~3.0|~4.0"
+          },
+          "require-dev": {
+            "cakephp/cakephp-codesniffer": "^3.0",
+            "phpunit/phpunit": "^4.8.26|^5.0"
+          },
+          "bin": [
+            "bin/phinx"
+          ],
+          "type": "library",
+          "autoload": {
+            "psr-4": {
+              "Phinx\\": "src/Phinx"
+            }
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
+          "authors": [
+            {
+              "name": "Woody Gilk",
+              "email": "woody.gilk@gmail.com",
+              "homepage": "http://shadowhand.me",
+              "role": "Developer"
+            },
+            {
+              "name": "Rob Morgan",
+              "email": "robbym@gmail.com",
+              "homepage": "https://robmorgan.id.au",
+              "role": "Lead Developer"
+            },
+            {
+              "name": "Richard Quadling",
+              "email": "rquadling@gmail.com",
+              "role": "Developer"
+            },
+            {
+              "name": "CakePHP Community",
+              "homepage": "https://github.com/cakephp/phinx/graphs/contributors"
+            }
+          ],
+          "description": "Phinx makes it ridiculously easy to manage the database migrations for your PHP app.",
+          "homepage": "https://phinx.org",
+          "keywords": [
+            "database",
+            "database migrations",
+            "db",
+            "migrations",
+            "phinx"
+          ],
+          "time": "2017-12-10T05:36:12+00:00"
+        },
+      {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.0.2",
             "source": {
@@ -1138,6 +1209,66 @@
             "time": "2017-09-30T22:39:41+00:00"
         },
         {
+          "name": "symfony/config",
+          "version": "v4.0.1",
+          "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/config.git",
+            "reference": "6e6dbc6d2beff8117b974d74274bff02e43c32a6"
+          },
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/config/zipball/6e6dbc6d2beff8117b974d74274bff02e43c32a6",
+            "reference": "6e6dbc6d2beff8117b974d74274bff02e43c32a6",
+            "shasum": ""
+          },
+          "require": {
+            "php": "^7.1.3",
+            "symfony/filesystem": "~3.4|~4.0"
+          },
+          "conflict": {
+            "symfony/finder": "<3.4"
+          },
+          "require-dev": {
+            "symfony/finder": "~3.4|~4.0",
+            "symfony/yaml": "~3.4|~4.0"
+          },
+          "suggest": {
+            "symfony/yaml": "To use the yaml reference dumper"
+          },
+          "type": "library",
+          "extra": {
+            "branch-alias": {
+              "dev-master": "4.0-dev"
+            }
+          },
+          "autoload": {
+            "psr-4": {
+              "Symfony\\Component\\Config\\": ""
+            },
+            "exclude-from-classmap": [
+              "/Tests/"
+            ]
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
+          "authors": [
+            {
+              "name": "Fabien Potencier",
+              "email": "fabien@symfony.com"
+            },
+            {
+              "name": "Symfony Community",
+              "homepage": "https://symfony.com/contributors"
+            }
+          ],
+          "description": "Symfony Config Component",
+          "homepage": "https://symfony.com",
+          "time": "2017-11-20T18:22:57+00:00"
+        },
+      {
             "name": "symfony/console",
             "version": "v4.0.1",
             "source": {
@@ -2932,7 +3063,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+  "stability-flags": {
+    "robmorgan/phinx": 20
+  },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
