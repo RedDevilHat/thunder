@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 $kernel = \etc\Kernel::getContainer();
 require_once __DIR__.'/../app/ServiceProvider/service_provider_bootstrap.php';
+require_once __DIR__.'/../app/ServiceProvider/console.php';
 
 // if you don't want to setup permissions the proper way, just uncomment the following PHP line
 //umask(0000);

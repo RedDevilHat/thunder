@@ -10,7 +10,7 @@ $router->filter('api_auth', function () use ($gate) {
 });
 
 
-$router->group(['before' => 'api_auth'], function () use ($router) {
+$router->group(['prefix' => '/api/v1/'], function () use ($router) {
     $router->controller('/', HomeController::class);
 });
 

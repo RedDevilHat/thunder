@@ -16,7 +16,7 @@ class JsonResponse implements ResponseInterface
      *
      * @return string
      */
-    public static function success($data): string
+    public static function success($data) : string
     {
         header('Content-Type: application/json');
 
@@ -29,16 +29,20 @@ class JsonResponse implements ResponseInterface
      *
      * @return string
      */
-    public static function error(int $statusCode, string $stacktrace = null): string
+    public static function error(int $statusCode, string $stacktrace = null) : string
     {
         header('Content-Type: application/json');
-        http_response_code($statusCode);
+        if (StatusHelper::isError($statusCode)) {
+            http_response_code($statusCode);
+        } else {
+            http_response_code(StatusHelper::HTTP_INTERNAL_SERVER_ERROR);
+        }
 
         return json_encode([
             'error' => [
                 'status_code' => $statusCode,
-                'message' => StatusHelper::getMessageForCode($statusCode),
-                'stacktrace' => $stacktrace,
+                'message'     => StatusHelper::getMessageForCode($statusCode),
+                'stacktrace'  => $stacktrace,
             ],
         ]);
 
