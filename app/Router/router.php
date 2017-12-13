@@ -12,7 +12,10 @@ $router->filter('api_auth', function () use ($gate) {
 
 $router->group(['prefix' => '/api/v1/'], function () use ($router) {
     $router->controller('/', HomeController::class);
+
+    $router->group(['before' => 'api_auth'], function () use ($router) {
+        $router->get('secure', function () {
+            return 'this is secure method';
+        });
+    });
 });
-
-
-
