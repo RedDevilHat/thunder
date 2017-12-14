@@ -9,6 +9,10 @@
 namespace etc\http\Response;
 
 
+use etc\ClassNameHelper;
+use etc\data\Hydrator\Hydrator;
+use etc\Kernel;
+
 class JsonResponse implements ResponseInterface
 {
     /**
@@ -20,7 +24,34 @@ class JsonResponse implements ResponseInterface
     {
         header('Content-Type: application/json');
 
-        return json_encode($data);
+        $kernel = Kernel::getContainer();
+
+
+        $result = [];
+
+        if (is_array($data) && count($data) > 0) {
+            foreach ($data as $entity) {
+                if (is_object($entity)) {
+                    /** @var Hydrator $hydrator */
+                    $hydrator = $kernel->make(Hydrator::class,
+                        ['entityName' => ClassNameHelper::getEntityClassNameWithoutNameSpace(get_class($entity))]);
+
+                    $result[] = $hydrator->extract($entity);
+                } else {
+                    $result[] = $entity;
+                }
+            }
+        }
+
+        if (is_object($data)) {
+            /** @var Hydrator $hydrator */
+            $hydrator = $kernel->make(Hydrator::class,
+                ['entityName' => ClassNameHelper::getEntityClassNameWithoutNameSpace(get_class($data))]);
+
+            $result = $hydrator->extract($data);
+        }
+
+        return json_encode($result);
     }
 
 

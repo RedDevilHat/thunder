@@ -15,18 +15,18 @@ use etc\security\ThunderUserInterface;
 class User extends Entity implements ThunderUserInterface
 {
     /** @var int */
-    public $id;
+    private $id;
     /** @var string */
-    public $username;
+    private $username;
 
     /** @var string */
-    public $password;
+    private $password;
 
     /** @var int */
-    public $token_id;
+    private $token_id;
 
     /** @var int */
-    public $role_id;
+    private $role_id;
 
     /**
      * @return int
