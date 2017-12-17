@@ -31,12 +31,12 @@ class UserTokenCreate extends AbstractMigration
         $this->table('user')
              ->addColumn('username', 'string')
              ->addColumn('password', 'string')
-             ->addColumn('token_id', 'integer')
+             ->addColumn('token_id', 'integer', ['null' => true])
              ->addTimestamps()
              ->save();
 
         $this->table('token')
-             ->addColumn('token', 'string')
+             ->addColumn('token', 'text')
              ->addColumn('user_id', 'integer')
              ->addColumn('expired_at', 'datetime')
              ->addTimestamps()

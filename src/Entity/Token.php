@@ -93,11 +93,11 @@ class Token extends Entity
     }
 
     /**
-     * @param int $expired_at
+     * @param $expired_at
      *
      * @return Token
      */
-    public function setExpiredAt(int $expired_at) : Token
+    public function setExpiredAt($expired_at) : Token
     {
         $this->expired_at = $expired_at;
 

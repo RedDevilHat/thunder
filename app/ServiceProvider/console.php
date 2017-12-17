@@ -6,6 +6,14 @@
  * Time: 23:01
  */
 
+$kernel->set('console', function () use ($kernel) {
+    return $kernel->make(\Symfony\Component\Console\Application::class, [
+        'name'    => 'Thunder',
+        'version' => '0.0.1-alpha',
+    ]);
+});
+
+
 $kernel->call(function () use ($kernel) {
     /** @var \Symfony\Component\Console\Application $console */
     $console = $kernel->get('console');

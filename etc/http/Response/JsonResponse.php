@@ -60,7 +60,7 @@ class JsonResponse implements ResponseInterface
      *
      * @return string
      */
-    public static function error(int $statusCode, string $stacktrace = null) : string
+    public static function error($statusCode, string $stacktrace = null) : string
     {
         header('Content-Type: application/json');
         if (StatusHelper::isError($statusCode)) {

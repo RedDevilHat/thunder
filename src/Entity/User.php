@@ -25,9 +25,6 @@ class User extends Entity implements ThunderUserInterface
     /** @var int */
     private $token_id;
 
-    /** @var int */
-    private $role_id;
-
     /**
      * @return int
      */
@@ -99,23 +96,4 @@ class User extends Entity implements ThunderUserInterface
         $this->token_id = $token_id;
         return $this;
     }
-
-    /**
-     * @return int
-     */
-    public function getRoleId(): int
-    {
-        return $this->role_id;
-    }
-
-    /**
-     * @param int $role_id
-     * @return User
-     */
-    public function setRoleId(int $role_id): User
-    {
-        $this->role_id = $role_id;
-        return $this;
-    }
-
 }

@@ -20,3 +20,5 @@ response_format: json
 secret_token_lenght: 128
 token_lenght: 512
 auth_header: X-AUTH-TOKEN
+
+##BOTS

@@ -11,7 +11,9 @@ namespace etc\data\Repositories\Adapter;
 
 use Database\Connection;
 use DI\Container;
+use etc\ClassNameHelper;
 use etc\data\Entity\EntityInterface;
+use etc\data\Hydrator\Hydrator;
 use etc\data\MySQL\MySQLConnection;
 use etc\Kernel;
 
@@ -77,12 +79,16 @@ class MySQLAdapter implements AdapterInterface
 
     public function insert(EntityInterface $entity)
     {
-        $this->transport->table($this->table)->insert($this->entityToArray($entity));
+        return $this->getById($this->transport->table($this->table)->insertGetId($this->entityToArray($entity)));
     }
 
     public function entityToArray(EntityInterface $entity)
     {
-        // TODO implement if need
+        /** @var Hydrator $hydrator */
+        $hydrator = $this->container->make(Hydrator::class,
+            ['entityName' => ClassNameHelper::getEntityClassNameWithoutNameSpace(get_class($entity))]);
+
+        return $hydrator->extract($entity);
     }
 
     public function update(EntityInterface $entity)

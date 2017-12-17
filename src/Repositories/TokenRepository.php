@@ -51,4 +51,9 @@ class TokenRepository extends Repositories
 
         throw new UnauthorizedException();
     }
+
+    public function create(Token $token)
+    {
+        return $this->adapter->insert($token);
+    }
 }

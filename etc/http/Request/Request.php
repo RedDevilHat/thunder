@@ -24,7 +24,7 @@ class Request
      *
      * @return mixed
      */
-    public function get(string $key = null): mixed
+    public function get(string $key = null)
     {
         $getData = $_GET;
 
@@ -40,7 +40,7 @@ class Request
      *
      * @return mixed
      */
-    public function post(string $key = null): mixed
+    public function post(string $key = null)
     {
         $postData = $_POST;
 
@@ -57,7 +57,7 @@ class Request
      *
      * @return mixed
      */
-    public function files(string $key = null): mixed
+    public function files(string $key = null)
     {
         $fileData = $_FILES;
 

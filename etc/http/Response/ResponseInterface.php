@@ -27,5 +27,5 @@ interface ResponseInterface
      *
      * @return string
      */
-    public static function error(int $statusCode, string $stacktrace = null): string;
+    public static function error($statusCode, string $stacktrace = null): string;
 }

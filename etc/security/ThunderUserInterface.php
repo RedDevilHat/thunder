@@ -54,15 +54,5 @@ interface ThunderUserInterface
      * @return ThunderUserInterface
      */
     public function setTokenId(int $tokenId);
-
-    /**
-     * @return int
-     */
-    public function getRoleId(): int;
-
-    /**
-     * @param int $role
-     * @return ThunderUserInterface
-     */
-    public function setRoleId(int $role);
+    
 }
